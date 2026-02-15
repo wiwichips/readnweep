@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "PATH=./node_modules/.bin:$PATH uv run pywrangler dev",
     "dev:local": "PATH=./node_modules/.bin:$PATH uv run pywrangler dev --local",
-    "smoke": "scripts/smoke_test.sh"
+    "smoke": "scripts/smoke_test.sh",
+    "ci:smoke": "scripts/ci_smoke.sh"
   }
 }
