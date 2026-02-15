@@ -5,11 +5,16 @@ compatibility_flags = ["python_workers"]
 
 assets = { directory = "public", binding = "ASSETS", run_worker_first = true }
 
+# Enable Workers Logs (Observability)
+[observability]
+enabled = true
+head_sampling_rate = 1
+
 # D1 database binding (SQLite). Fill in IDs from `wrangler d1 create`.
 [[d1_databases]]
 binding = "DB"
 database_name = "readnweep-db"
-database_id = "REPLACE_ME"
+database_id = "99ffa424-f2a7-45ee-9090-41fcf06257ba"
 migrations_dir = "migrations"
 
 # Optional KV binding for persistence. If you add this, also add the IDs from `wrangler kv:namespace create`.
