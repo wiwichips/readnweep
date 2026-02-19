@@ -4,13 +4,35 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Read It and Weep</title>
+    <style>
+      /* Minimal dropzone styling */
+      #dropzone {
+        padding: 16px;
+        border: 2px dashed #999;
+        border-radius: 10px;
+        display: inline-block;
+        cursor: pointer;
+        user-select: none;
+      }
+      #dropzone.dragover {
+        border-color: #333;
+        background: #f3f3f3;
+      }
+      #file-input {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <h1>Read It and Weep</h1>
     <p>Upload a photo and get the IP of whoever clicks on it!</p>
 
     <form id="upload-form">
-      <input id="file-input" type="file" name="file" accept="image/*" required />
+      <div id="dropzone" tabindex="0" role="button" aria-label="Upload image">
+        Drag &amp; drop an image here, or click to browse
+        <input id="file-input" type="file" name="file" accept="image/*" required />
+      </div>
+
       <button type="submit">Upload</button>
     </form>
 
