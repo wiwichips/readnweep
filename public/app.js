@@ -3,6 +3,13 @@ const statusEl = document.getElementById("status");
 const resultEl = document.getElementById("result");
 const fileInput = document.getElementById("file-input");
 const dropzone = document.getElementById("dropzone");
+const filenameEl = document.getElementById("filename");
+
+fileInput.addEventListener("change", () => {
+  const f = fileInput.files?.[0];
+  filenameEl.innerHTML = '<b>Selected:</b> ' + (f ? f.name : "");
+});
+
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -18,6 +25,7 @@ form.addEventListener("submit", async (event) => {
   data.append("file", fileInput.files[0]);
 
   try {
+    statusEl.textContent = "Uploading...";
     const response = await fetch("/api/images", {
       method: "POST",
       body: data,
@@ -41,7 +49,6 @@ form.addEventListener("submit", async (event) => {
   }
 });
 
-// NEW -- Drag & Drop functionality
 // click dropzone -> open file picker
 dropzone.addEventListener("click", () => fileInput.click());
 
@@ -77,5 +84,5 @@ dropzone.addEventListener("drop", (e) => {
   dt.items.add(file);
   fileInput.files = dt.files;
 
-  statusEl.textContent = `Selected: ${file.name} (click Upload)`;
+  filenameEl.innerHTML = `<b>Selected</b>: ${file.name} (click Upload)`;
 });
